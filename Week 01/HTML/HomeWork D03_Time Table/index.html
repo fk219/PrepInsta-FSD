@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Table</title>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/4598/4598376.png" type="image/x-icon">
+    
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        header{
+            background-color:rgb(245, 221, 221);
+            text-align: center;
+            height: 5rem;
+            padding: 1rem 0;
+        }
+       
+        table, td, th{
+            margin: 0 auto;
+            border: 1px solid;
+            border-collapse: collapse;
+            /* Border-collapse: collapse = used to remove 2 borders */
+            text-align: center;
+            padding: 5px;
+        }
+        caption{
+            margin: 2rem 0;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        thead, .grey{
+            font-weight: bold;
+            background-color: rgb(218, 218, 218);
+        }
+        .line1{
+            background-color: rgb(253,250,114);
+        }
+        .line2{
+            background-color: rgb(137, 207, 240);
+        }
+        .line3{
+            background-color: rgb(255,156,56);
+        }
+        .line4{
+            background-color:rgb(207, 159, 255);
+        }
+        .line5{
+            background-color: rgb(144, 238, 144);
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Tables</h1>
+    </header>
+
+    <hr>
+    <hr>
+
+    <main>
+        <table>
+            <!-- <colgroup>: Defines a group of columns in a table for styling.
+            Attributes:
+            - span: Specifies the number of columns the <colgroup> should span.
+            - Use <col> inside <colgroup> to apply styles like width, background, etc.  -->
+            <colgroup span="6" ">
+                <col style="width: 100px">
+                <col span="5" style="width: 200px">
+            </colgroup>
+    
+            <!-- caption = Used for Table Heading -->
+            <caption><h5>Interim Term 2 Elizabeth College TimeTable 2024</h5></caption>
+            <thead>
+                <tr>
+                    <td class="grey">Time</td>
+                    <td class="grey">Monday</td>
+                    <td class="grey">Tuesday</td>
+                    <td class="grey">Wednesday</td>
+                    <td class="grey">Thursday</td>
+                    <td class="grey">Friday</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>08:30 - 9:30</td>
+                    <td rowspan="2" class="line1">Line 1</td>
+                    <td rowspan="2" class="line4">Line 4</td>
+                    <td rowspan="2" class="line3">Line 3</td>
+                    <td rowspan="2" class="line1">Line 1</td>
+                    <td rowspan="2" class="line3">Line 3</td>
+                </tr>
+                <tr>
+                    <td>09:30 - 10:30</td>
+                    
+                </tr>
+                <tr>
+                    <td>10:30 - 11:00</td>
+                    <td class="grey">Recess</td>
+                    <td class="grey">Recess</td>
+                    <td class="grey">Recess</td>
+                    <td class="grey">Recess</td>
+                    <td class="grey">Recess</td>
+                </tr>
+                <tr>
+                    <td>11:00 - 12:00</td>
+                    <td rowspan="2" class="line2">Line 2</td>
+                    <td rowspan="2" class="line5">Line 5</td>
+                    <td style="background-color: rgb(255, 182, 193);">Home Group</td>
+                    <td rowspan="2" class="line4">Line 4</td>
+                    <td rowspan="2" class="line1">Line 1</td>
+                </tr>
+                <tr>
+                    <td>12:00 - 12:30</td>
+                    <td class="line2">Line 2</td>
+                </tr>
+                <tr>
+                    <td>12:30 - 01:00</td>
+                    <td class="grey">Lunch</td>
+                    <td class="grey">Lunch</td>
+                    <td class="grey">Lunch</td>
+                    <td class="grey">Lunch</td>
+                    <td class="grey">Lunch</td>
+                </tr>
+                <tr>
+                    <td>01:00 - 02:00</td>
+                    <td rowspan="2" class="line3">Line 3</td>
+                    <td class="line5">Line 5</td>
+                    <td class="line1">Line 1</td>
+                    <td class="line5">Line 5</td>
+                    <td rowspan="2" class="line2">Line 2</td>
+                </tr>
+                <tr>
+                    <td>02:00 - 03:00</td>
+                    <td rowspan="2" class="grey">Staff Meeting</td>
+                    <td rowspan="2" class="grey">Teacher Assesment & Preparation</td>
+                    <td rowspan="2" class="grey">Leadership Meeting</td>
+                </tr>
+                <tr>
+                    <td>03:00 - 03:30</td>
+                    <td class="grey">Teacher Assesment & Preparation</td>
+                    <td class="grey">Teacher Assesment & Preparation</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

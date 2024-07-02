@@ -1,0 +1,170 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: black;
+  --white: #fff;
+  --offwhite: #f4f4f4;
+  --grey: #bbb;
+  --blue: #0073e6;
+}
+body {
+  background-color: #f4f4f4;
+}
+a {
+  text-decoration: none;
+}
+header {
+  width: 100%;
+  background-color: var(--white);
+}
+.header {
+  width: 65%;
+  margin: 0 auto;
+  background-color: var(--white);
+}
+
+.logo {
+  margin: 0.1rem;
+}
+.searchbar {
+  width: 20rem;
+  border: none;
+  background-color: var(--offwhite);
+  padding: 0.5rem;
+  border-radius: 1rem;
+  margin-left: 0.5rem;
+}
+.navbar {
+  background-color: var(--white);
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid lightgray;
+  align-items: center;
+}
+.mid-nav-btns,
+.left-nav,
+.right-nav-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar a {
+  font-size: 2rem;
+  margin: 3rem;
+}
+.right-nav-btns a {
+  margin: 0.1rem;
+}
+
+.cover-photo {
+  height: 10rem;
+  background-image: url(https://img.freepik.com/free-photo/keyboard-tea-cup-apple-office-stationeries-black-background_23-2148042011.jpg?ga=GA1.1.1211828048.1719836356&semt=ais_user);
+  border-radius: 0.5rem;
+}
+.profile-photo {
+  background-color: var(--grey);
+  border-radius: 50%;
+  height: 11.5rem;
+  width: 11.5rem;
+  margin-left: 1.5rem;
+  margin-top: -2rem;
+  border: 5px solid white;
+}
+.outermost,
+.categories {
+  display: flex;
+}
+.left-banner {
+  display: flex;
+}
+.details {
+  margin: 2rem 1rem 5rem 1rem;
+}
+.categories {
+  display: flex;
+  justify-content: space-between;
+}
+.cat-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cat-list li {
+  margin: 0 0.1rem;
+  padding: 0.7rem;
+}
+.underline {
+  border-bottom: 2px solid var(--blue);
+}
+
+button {
+  padding: 0.4rem 0.7rem;
+  border: none;
+  border-radius: 0.4rem;
+  background-color: lightgray;
+  font-weight: bolder;
+}
+.add-btn {
+  position: relative;
+  top: 7.6rem;
+  left: 51rem;
+  background-color: var(--white);
+}
+.banner-btns {
+  position: relative;
+  top: 7rem;
+  left: 19.5rem;
+}
+.blue{
+  background-color: var(--blue);
+  color: var(--white);
+}
+.main-btn {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+}
+
+button:hover {
+  cursor: pointer;
+}
+.cat-btn {
+  padding: 2px;
+  margin: 5px 10px 0 10px;
+}
+
+.left-side {
+  margin: 1rem;
+  border-radius: 1rem;
+  background-color: var(--white);
+  width: 45%;
+  text-align: start;
+  font-size: 1.1rem;
+}
+.main-content {
+  width: 65%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.main-content p,
+.main-content button {
+  margin: 1rem;
+}
+
+.right-side {
+  border: 1px solid black;
+}
+
+.pp {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+}
+.post {
+  width: 100%;
+}
