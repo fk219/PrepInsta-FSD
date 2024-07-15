@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Teller</title>
+</head>
+<body>
+    <h1>Fortune Teller</h1>
+    <button onclick="getFortune()"> Tell Fortune</button>
+    <script>
+
+    //   function tellFortune(numChildren, partnerName, location, jobTitle) {
+    //     // Constructing the fortune message
+    //     var fortune =
+    //       "You will be a " +
+    //       jobTitle +
+    //       " in " +
+    //       location +
+    //       ", and married to " +
+    //       partnerName +
+    //       " with " +
+    //       numChildren +
+    //       " kids.";
+
+    //     // Displaying the fortune message
+    //     console.log(fortune);
+    //   }
+
+      // Calling the tellFortune function three times with different arguments
+    //   tellFortune(2, "Alice", "New York", "Software Engineer");
+    //   tellFortune(3, "Bob", "Los Angeles", "Graphic Designer");
+    //   tellFortune(1, "Charlie", "San Francisco", "Product Manager");
+    
+    function tellFortune(numChildren, partnerName, location, jobTitle){
+        
+        var fortune = `You wil be a ${jobTitle} in ${location}, and married to ${partnerName} with ${numChildren} kids.`;
+        
+        alert(fortune);
+    }
+    
+    function getFortune(){
+        var numChildren = prompt("How many Children you will have?");
+        var partnerName = prompt("What is the name of the Future Partner?");
+        var location = prompt("Where will you live?");
+        var jobTitle = prompt("What will be your Future Job Title?");
+        
+        
+        tellFortune(numChildren, partnerName, location, jobTitle);
+    }
+    </script>
+</body>
+</html>

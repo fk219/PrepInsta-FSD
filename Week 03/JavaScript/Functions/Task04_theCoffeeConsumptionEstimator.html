@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Coffee Consumption Estimator</title>
+</head>
+<body>
+    <h1>The Coffee Consumption Estimator</h1>
+    <button onclick="getEstimator()">Get Estimate</button>
+    <script>
+
+        function calculateCoffeeSupply(age, cupsPerDay){
+            var maxAge = 100;
+            var yearsLeft = maxAge - age;
+
+            var totalCups = Math.round(cupsPerDay * 365 * yearsLeft);
+
+            var message = `You will need ${totalCups} cups of coffee to keep you awake until the age of ${maxAge} years.`;
+
+            alert(message);
+        }
+
+        function getEstimator(){
+            var age = parseFloat(prompt("Enter your age: "));
+            var cupsPerDay = parseFloat(prompt("Enter the Cups of Coffee you consume per day: "));
+
+
+
+            if(isNaN(age) || isNaN(cupsPerDay) || age < 0 || cupsPerDay < 0){
+                alert("Please Enter valid number for 'age' and 'cups per day'")
+                return;
+            }
+
+            calculateCoffeeSupply(age, cupsPerDay);
+        }
+
+    </script>
+</body>
+</html>

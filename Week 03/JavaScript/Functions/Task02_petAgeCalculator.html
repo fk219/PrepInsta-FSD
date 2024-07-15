@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pet Age Calculator</title>
+</head>
+<body>
+    <h1>Pet Age Calculator</h1>
+    <button onclick="getPetAge()">Calculate Pet Age</button>
+
+    <script>
+        function calculatePetAge(petAge, conversionRate = 7){
+            var humanYears =  petAge * conversionRate;
+            var message = `Your pet is ${humanYears} years old in pet years!` ;
+            alert(message);
+        }
+
+        function getPetAge(){
+            var petAge = prompt("Enter your Pet's Age:");
+            var conversionRate = prompt("Enter your conversion rate (default is 7):", "7");
+            
+            petAge = parseFloat(petAge);
+            conversionRate = parseFloat(conversionRate);
+
+            if(isNaN(petAge) || isNaN(conversionRate) || conversionRate <= 0 || petAge <= 0){
+                alert("Please enter valid number for Pet Age and Conversion rate: ");
+                return;
+            }
+
+            calculatePetAge(petAge, conversionRate);
+        }
+    </script>
+</body>
+</html>

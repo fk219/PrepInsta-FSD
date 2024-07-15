@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle Properties Calculator</title>
+</head>
+<body>
+    <h1>Rectangle Properties Calculator:</h1>
+    <button onclick="getPerimeter()">Calculate Perimeter</button>
+    <button onclick="getArea()">Calculate Area</button>
+
+    <script>
+        function calcPerimeter(length, width) {
+            var perimeter = 2 * (length + width);
+            alert(`The perimeter is ${perimeter}`);
+        }
+
+        function calcArea(length, width) {
+            var area = length * width;
+            alert(`The area is ${area}`);
+        }
+
+        function getPerimeter() {
+            var length = parseFloat(prompt("Enter the length of the rectangle:"));
+            var width = parseFloat(prompt("Enter the width of the rectangle:"));
+            
+            if (isNaN(length) || isNaN(width) || length <= 0 || width <= 0) {
+                alert("Please enter valid positive numbers for length and width.");
+                return;
+            }
+
+            calcPerimeter(length, width);
+        }
+
+        function getArea() {
+            // Prompt the user for length and width
+            var length = parseFloat(prompt("Enter the length of the rectangle:"));
+            var width = parseFloat(prompt("Enter the width of the rectangle:"));
+            
+            // Validate the inputs
+            if (isNaN(length) || isNaN(width) || length <= 0 || width <= 0) {
+                alert("Please enter valid positive numbers for length and width.");
+                return;
+            }
+
+            // Call the calcArea function
+            calcArea(length, width);
+        }
+    </script>
+</body>
+</html>
