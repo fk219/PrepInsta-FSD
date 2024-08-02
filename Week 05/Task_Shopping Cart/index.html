@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ShopLogo</div>
+            <ul class="nav-links">
+                <li><a href="#electronics">Electronics</a></li>
+                <li><a href="#fashion">Fashion</a></li>
+                <li><a href="#home">Home</a></li>
+                <li class="cart">
+                    <a href="#cart"><i class="cart-icon">🛒</i><span class="cart-count">0</span></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="products">
+            <h2>Products</h2>
+            <div class="product-list">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+        </section>
+        <section id="cart" class="hidden">
+            <h2>Shopping Cart</h2>
+            <div class="cart-items">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+            <div class="cart-summary">
+                <p>Total: $<span class="cart-total">0.00</span></p>
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

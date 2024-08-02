@@ -1,0 +1,340 @@
+
+/* styles for body */
+body{
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* styling the scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+    background-color:transparent;
+  }
+  
+::-webkit-scrollbar-thumb {
+    background: #37475A;
+    border-radius: 10px;
+    height: 0.5rem;
+}
+
+
+/* main container of page */
+.mainContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* clock container */
+.clockContainer{
+    width: 35%;
+    height: 85%;
+    background-color: #ff9900;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    padding: 0 4px;
+    border: 8px solid #37475A;
+}
+
+
+/* common styles for direct child div inside clock container */
+.clockContainer > div {
+    width: 90%;
+    text-align: center;
+}
+
+
+/* =============== to show time ========= */
+
+
+/* time display container */
+#timeDisplay{
+    width: 75%;
+    height: 7rem;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #37475A;
+    border: 3px solid #fff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#timeDisplay span{
+    font-size: 4.2rem;
+    font-weight: bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #fff;
+}
+
+
+/*  ================  To Add a new alarm =========== */
+
+/* for adding a new alarm  */
+#addAlarm{
+    height: 10rem;
+    background-color: #37475A;
+    border-top: 4px solid #fff;
+    border-left: 4px solid #fff;
+    border-right: 4px solid #fff;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+
+/* div inside the add alarm section */
+#addAlarm > div{
+    width: 100%;
+}
+
+
+/* input Container for taking user's input */
+#timeInput{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+
+/* select tag inside the input Container */
+#timeInput select{
+    width: 6rem;
+    height: 2rem;
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+    font-weight: bolder;
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 2px solid #37475A;
+    border-radius: 4px;
+    color: #37475A;
+    background-color: #fff;
+}
+
+#timeInput select:focus{
+    outline: none;
+}
+
+
+/* common styles for buttons */
+button{
+    border: none;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 0px grey;
+    cursor: pointer;
+}
+
+
+/* set alarm button  */
+#btnContainer button{
+    background-color: #ff9900;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    font-family: cursive;
+    width: 80%;
+    height: 2.2rem;
+}
+
+#btnContainer button:hover{
+    background-color: #2ac60f;
+    color: #fff;
+}
+/* ===================== Alarm List =============== */
+
+
+/* alarm list container */
+#alarmList{
+    height:55%;
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+    background-color: #37475A;
+    border: 4px solid #fff;
+    border-top: none;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+
+/* single alarm element */
+#alarmList > div{
+    width: 90%;
+    padding-left: 2.5rem;
+    margin-top: 1.2rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: cursive;
+    font-size: 1.3rem;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+
+/* alarm delete button */
+.delete{
+    width: 6rem;
+    font-weight: bolder;
+    background-color: #ff9900;
+    height: 2rem;
+}
+
+.delete:hover{
+    background-color: red;
+}
+
+
+/*  ======================== Responsive Styles =================== */
+
+
+/* styles below width :1525px */
+@media screen and (max-width: 1525px) {
+
+    /* main clock container */
+    .clockContainer{
+        width: 55%;
+    }
+
+    /* font of time shown */
+    #currentTime span{
+        font-size: 3.6rem;
+    }
+}
+
+
+/* styles below width 1250px */
+@media screen and (max-width: 1250px) {
+
+    /* main clock container */
+    .clockContainer{
+        width: 60%;
+    }
+
+    /* time panel of clock */
+    #timeDisplay{
+        height: 15%;
+    }
+}
+
+
+/* styles below width 1070px */
+@media screen and (max-width: 1070px) {
+
+    /* main clock container */
+    .clockContainer{
+        width: 65%;
+    }
+
+    /* time panel of clock */
+    #timeDisplay{
+        height: 18%;
+    }
+
+
+    /* time font */
+    #currentTime span{
+        font-size: 3.5rem;
+    }
+
+    /* */
+    #alarmList{
+        height: 60%;
+    }
+}
+
+
+/* styles below width 935px */
+@media screen and (max-width: 935px) {
+
+    /* main clock container */
+    .clockContainer{
+        width: 70%;
+    }
+
+    /* time panel */
+    #timeDisplay{
+        height: auto;
+    }
+
+    /* set alarm button */
+    #btnContainer button {
+        width: 30%;
+    }
+
+    /* current time font */
+    #currentTime span{
+        font-size: 3rem;
+    }
+}
+
+
+/* styles below width 795px */
+@media screen and (max-width: 795px) {
+
+    /* main clock container */
+    .clockContainer{
+        width: 75%;
+    }
+
+    /* alarm list  */
+    #alarmList{
+        height: 70%;
+    }
+
+    /* div inside clock container */
+    .clockContainer > div{
+        width: 95%;
+    }
+}
+
+
+/* styles below width 680px */
+@media screen and (max-width: 680px) {
+
+    /* main clock  */
+    .clockContainer{
+        width: 80%;
+    }
+
+    /* time panel */
+    #timeDisplay{
+        height: auto;
+    }
+
+
+    /* select tag */
+    #timeInput select{
+        text-overflow: ellipsis;
+    }
+
+    /* set alarm button */
+    #btnContainer button {
+        width: 40%;
+    }
+}
+
+
+/* styles below width 580px */
+@media screen and (max-width: 580px) {
+
+    /* main clock container */
+    .clockContainer{
+        width: 85%;
+    }
+
+    /* current time font */
+    #currentTime span{
+        font-size: 2.5rem;
+    }
+}
+
