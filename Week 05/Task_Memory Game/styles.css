@@ -1,0 +1,216 @@
+:root {
+  --color-background: #37475A;
+  --color-card-background: #ff9900;
+  --color-card-show: skyblue;
+  --color-card-match: rgb(4, 172, 54);
+  --color-card-no-match: rgb(175, 38, 38);
+  --color-modal-background: rgba(0, 0, 0, 0.6);
+  --color-modal-content: rgb(241, 241, 241);
+  --color-close-button: lightgray;
+  --color-close-button-hover: darkgray;
+  --color-tick: rgba(0, 218, 29, 0.767);
+  --color-stats: rgb(143, 143, 143);
+  --color-new-game: rgb(75, 189, 0);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html, body {
+  background-color: lightgray;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1{
+  border-bottom: 2px solid #37475A;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.score-table {
+  font-size: 1.5rem;
+  text-align: left;
+  width: 500px;
+  margin: 0;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.restart {
+  cursor: pointer;
+}
+
+.deck {
+  background: var(--color-background);
+  margin: 0;
+  width: 612px;
+  min-height: 500px;
+  box-shadow: 10px 9px 31px 1px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.card {
+  transform: rotateY(0);
+  transition: 0.5s;
+  width: 125px;
+  height: 125px;
+  background: var(--color-card-background);
+  box-shadow: 5px 5px 24px -3px rgba(0, 0, 0, 0.75);
+  border-radius: 8px;
+  font-size: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.show {
+  transform: rotateY(180deg);
+  transition: 0.5s;
+  background: var(--color-card-show);
+  font-size: 33px;
+  color: white;
+  cursor: default;
+}
+
+.match {
+  background: var(--color-card-match);
+}
+
+.no-match {
+  background: var(--color-card-no-match);
+  transition: 0.1s;
+}
+
+.modal {
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-modal-background);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-modal-content);
+  padding: 1rem 1.5rem;
+  width: 35rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.close-button {
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: var(--color-close-button);
+}
+
+.close-button:hover {
+  background-color: var(--color-close-button-hover);
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.tick {
+  color: var(--color-tick);
+  font-size: 60px;
+  margin-left: 35px;
+}
+
+.modal-heading {
+  letter-spacing: 2px;
+}
+
+.stats {
+  color: var(--color-stats);
+  margin-top: 30px;
+}
+
+.new-game {
+  background: var(--color-new-game);
+  color: #fff;
+  border: 0;
+  padding: 1em 2em;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+@media screen and (max-width: 600px) {
+  .deck {
+      width: 350px;
+      min-height: 280px;
+  }
+  .card {
+      width: 68px;
+      height: 68px;
+  }
+  .show {
+      font-size: 30px;
+  }
+  .modal-content {
+      width: 15rem;
+  }
+  .tick {
+      color: var(--color-tick);
+      font-size: 45px;
+      margin-left: 25px;
+  }
+  h1 {
+      font-size: 20px;
+  }
+  h3 {
+      font-size: 16px;
+  }
+  .score-table {
+      width: 320px;
+  }
+}

@@ -1,52 +1,172 @@
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    font-family: "Poppins", sans-serif;
+    /* font-size: 1.5rem; */
     margin: 0;
-    padding: 0;
 }
-
-header {
-    background-color: #333;
-    color: white;
-    padding: 1em;
+.container{
+    width: 700px;
+    max-width: 700vw;
+    margin: auto;
+    text-align: center;
+    padding-top: 10px;
+    transition: transform 0.5s;
 }
-
-nav {
+header{
+    font-weight: bolder;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;    
+    padding: 25px 0;
 }
-
-.logo {
-    font-size: 1.5em;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1em;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-}
-
-.cart-icon {
+header .icon-cart{
     position: relative;
 }
-
-.cart-count {
-    background-color: red;
+header .icon-cart span{
+    background-color: maroon;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2rem;
+    height: 1.2rem;
     border-radius: 50%;
-    color: white;
-    padding: 0.2em 0.5em;
     position: absolute;
-    top: -10px;
-    right: -10px;
-    font-size: 0.8em;
+    top: 50%;
+    right: -20%;
+    font-size: 0.8rem;
+}
+.listProduct .item{
+    height: 13rem;
+    box-shadow: 10px 10px 20px 0px #0009;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.listProduct .item img{
+    width: 90%;
+    height: 50%;
+    filter: drop-shadow(10px 25px 8px #0009);
+    padding-bottom: 1rem;
+}
+.listProduct{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+.listProduct .item{
+    background-color: #eeeee6;
+    padding: 20px 10px;
+    border-radius: 15px;
+}
+.listProduct .item h2{
+    font-weight: 500;
+    font-size: large;
+    padding: 0;
+    margin: 0;
+}
+.listProduct .item .price{
+    margin: 5px auto;
+    letter-spacing: 5px;
+    font-size: small;
+}
+.listProduct .item button{
+    font-size: 0.7rem;
+    margin: 0;
+    width: 70%;
+    padding: 0.5rem 0.5rem;
+    background-color: #ff9900;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.cartTab{
+    width: 350px;
+    background-color: #37475A;
+    color: #fff;
+    position: fixed;
+    display: grid;
+    /* top: 0;
+    right: 0;
+    bottom: 0; 
+    inset can be used inset top right bottom left*/
+    inset: 0 -350px 0 auto;
+    grid-template-rows: 80px 1fr 50px; /*Top and Bottom divs lenght = 70px,  and middle div will be remaining lenght*/
+    transition: .5s;
+}
+body.showCart .cartTab{
+    inset: 0 0 0 auto;
 }
 
-.hidden {
-    display: none;
+body.showCart .container{
+    transform: translateX(-250px);
+}
+.cartTab h1{
+    font-size: 1.5rem;
+    font-weight: 300;
+    padding: 1.2rem;
+    margin: 0;
+    border-bottom: 1px solid #fff;
+    
+}
+.cartTab .btn{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.cartTab .btn button{
+    background-color: #ff9900;
+    color: #000;
+    font-weight: 500;
+    border: none;
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+.cartTab .btn .close{
+    background-color: #eee;
+}
+.cartTab .listCart .item img{
+    width: 80%;
+    height: 2.8rem;
+    filter: drop-shadow(8px 8px 3px #000)
+    
+}
+.cartTab .listCart .item {
+    height: 12%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    padding: 0.5rem auto;
+    display: grid;
+    grid-template-columns: 70px 120px 50px 1fr;
+    gap: 0.5rem;
+}
+
+.cartTab .listCart .item span{
+    display: inline-block;
+    background-color: #fff;
+    color: #37475A;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    padding: 0; 
+}
+
+.cartTab .listCart .item span:nth-child(2){
+    background-color: transparent;
+    color: #fff;
+}
+.cartTab .listCart .item:nth-child(even){
+    background-color: gray;
+}
+.listCart{
+    overflow: auto;
+}
+.listCart::-webkit-scrollbar{
+    width: 0;
 }

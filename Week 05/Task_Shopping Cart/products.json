@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name":" LD01 SHIRT",
+        "price": 400,
+        "image": "image/1.png"
+    },
+    {
+        "id": 2,
+        "name":" LD02 SHIRT",
+        "price": 450,
+        "image": "image/2.png"
+    },
+    {
+        "id": 3,
+        "name":" LD03 SHIRT",
+        "price": 300,
+        "image": "image/3.png"
+    },
+    {
+        "id": 4,
+        "name":" LD04 SHIRT",
+        "price": 350,
+        "image": "image/4.png"
+    },
+    {
+        "id": 5,
+        "name":" LD05 SHIRT",
+        "price": 200,
+        "image": "image/5.png"
+    },
+    {
+        "id": 6,
+        "name":" LD06 SHIRT",
+        "price": 250,
+        "image": "image/6.png"
+    },
+    {
+        "id": 7,
+        "name":" LD07 SHIRT",
+        "price": 500,
+        "image": "image/7.png"
+    },
+    {
+        "id": 8,
+        "name":" LD08 SHIRT",
+        "price": 550,
+        "image": "image/8.png"
+    }
+]
