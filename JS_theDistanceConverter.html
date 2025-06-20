@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distance Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .converter-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin: 15px auto;
+            max-width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0,123,255,0.3);
+        }
+
+        .toggle-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button.active {
+            background-color: #28a745;
+        }
+
+        .result {
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #e9f7ef;
+            border-radius: 4px;
+            display: none;
+            color: #333;
+            max-width: 300px;
+        }
+
+        .error {
+            margin: 10px auto;
+            color: #dc3545;
+            display: none;
+            font-size: 14px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter-container">
+        <h1>Distance Converter</h1>
+        <div class="toggle-group">
+            <button id="metersToFeetBtn" class="active" onclick="setConversionType('metersToFeet')">Meters to Feet</button>
+            <button id="feetToMetersBtn" onclick="setConversionType('feetToMeters')">Feet to Meters</button>
+        </div>
+        <div class="input-group">
+            <label id="inputLabel" for="distance">Distance in Meters:</label>
+            <input type="number" id="distance" min="0" step="any" placeholder="Enter distance">
+        </div>
+        <div id="error" class="error"></div>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        let conversionType = 'metersToFeet';
+
+        function setConversionType(type) {
+            conversionType = type;
+            document.getElementById('metersToFeetBtn').classList.toggle('active', type === 'metersToFeet');
+            document.getElementById('feetToMetersBtn').classList.toggle('active', type === 'feetToMeters');
+            document.getElementById('inputLabel').textContent = type === 'metersToFeet' 
+                ? 'Distance in Meters:' 
+                : 'Distance in Feet:';
+            document.getElementById('distance').value = '';
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+        }
+
+        function validateInput(value) {
+            const num = parseFloat(value);
+            if (isNaN(num) || num < 0) {
+                showError('Please enter a valid positive number.');
+                return false;
+            }
+            return true;
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        function showResult(message) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = message;
+            resultDiv.style.display = 'block';
+        }
+
+        function convertDistance() {
+            const distance = parseFloat(document.getElementById('distance').value);
+            
+            if (!validateInput(distance)) return;
+
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+
+            let result;
+            if (conversionType === 'metersToFeet') {
+                result = distance * 3.281;
+                showResult(`${distance} meters is equal to ${result.toFixed(2)} feet.`);
+            } else {
+                result = distance * 0.3048;
+                showResult(`${distance} feet is equal to ${result.toFixed(2)} meters.`);
+            }
+        }
+
+        // Event listeners
+        document.getElementById('distance').addEventListener('input', () => {
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+            convertDistance();
+        });
+
+        // Initial conversion on page load
+        document.getElementById('distance').focus();
+    </script>
+</body>
+</html>

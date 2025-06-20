@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle Properties Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .calculator-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .input-group {
+            margin: 20px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .error {
+            color: #d32f2f;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .rectangle-visual {
+            margin: 20px 0;
+            border: 2px solid #4CAF50;
+            display: none;
+            position: relative;
+        }
+
+        .dimensions {
+            position: absolute;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .length-label {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .width-label {
+            left: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Rectangle Properties Calculator</h1>
+        <div class="input-group">
+            <label for="length">Length:</label>
+            <input type="number" id="length" min="0" step="any" placeholder="Enter length">
+        </div>
+        <div class="input-group">
+            <label for="width">Width:</label>
+            <input type="number" id="width" min="0" step="any" placeholder="Enter width">
+        </div>
+        <div class="button-group">
+            <button onclick="calculate('perimeter')">Calculate Perimeter</button>
+            <button onclick="calculate('area')">Calculate Area</button>
+        </div>
+        <div id="error" class="error"></div>
+        <div id="result" class="result"></div>
+        <div id="rectangle" class="rectangle-visual">
+            <div class="dimensions length-label" id="length-label"></div>
+            <div class="dimensions width-label" id="width-label"></div>
+        </div>
+    </div>
+
+    <script>
+        function calcPerimeter(length, width) {
+            return 2 * (length + width);
+        }
+
+        function calcArea(length, width) {
+            return length * width;
+        }
+
+        function validateInputs(length, width) {
+            if (isNaN(length) || isNaN(width) || length <= 0 || width <= 0) {
+                showError("Please enter valid positive numbers for length and width.");
+                return false;
+            }
+            return true;
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        function showResult(message) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = message;
+            resultDiv.style.display = 'block';
+        }
+
+        function drawRectangle(length, width) {
+            const rectangle = document.getElementById('rectangle');
+            const maxDimension = 200; // Maximum pixel size for visualization
+            const scale = Math.min(maxDimension / length, maxDimension / width);
+            
+            rectangle.style.width = `${length * scale}px`;
+            rectangle.style.height = `${width * scale}px`;
+            rectangle.style.display = 'block';
+            
+            document.getElementById('length-label').textContent = `Length: ${length}`;
+            document.getElementById('width-label').textContent = `Width: ${width}`;
+        }
+
+        function calculate(type) {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            
+            if (!validateInputs(length, width)) return;
+
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+
+            if (type === 'perimeter') {
+                const perimeter = calcPerimeter(length, width);
+                showResult(`The perimeter is ${perimeter.toFixed(2)} units`);
+            } else {
+                const area = calcArea(length, width);
+                showResult(`The area is ${area.toFixed(2)} square units`);
+            }
+
+            drawRectangle(length, width);
+        }
+
+        // Clear result when inputs change
+        document.getElementById('length').addEventListener('input', () => {
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('rectangle').style.display = 'none';
+        });
+        document.getElementById('width').addEventListener('input', () => {
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('rectangle').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Teller</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #2c3e50, #4b0082);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .fortune-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-shadow: 0 0 10px rgba(255,215,0,0.5);
+        }
+
+        .input-group {
+            margin: 15px auto;
+            max-width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ffd700;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ffeb3b;
+            box-shadow: 0 0 5px rgba(255,235,59,0.5);
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #800080;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+            margin: 10px auto;
+            display: block;
+        }
+
+        button:hover {
+            background-color: #4b0082;
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin: 20px auto;
+            padding: 15px;
+            background: rgba(255,215,0,0.1);
+            border-radius: 4px;
+            display: none;
+            color: #fff;
+            max-width: 300px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error {
+            margin: 10px auto;
+            color: #ff4500;
+            display: none;
+            font-size: 14px;
+            max-width: 300px;
+        }
+
+        .fortune-visual {
+            margin: 20px auto;
+            display: none;
+            max-width: 300px;
+        }
+
+        .crystal-ball {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #fff 0%, #ffd700 70%, #800080 100%);
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(255,215,0,0.5); }
+            50% { box-shadow: 0 0 20px rgba(255,215,0,0.8); }
+            100% { box-shadow: 0 0 10px rgba(255,215,0,0.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="fortune-container">
+        <h1>Fortune Teller</h1>
+        <div class="input-group">
+            <label for="numChildren">Number of Children:</label>
+            <input type="number" id="numChildren" min="0" step="1" placeholder="Enter number of children">
+        </div>
+        <div class="input-group">
+            <label for="partnerName">Future Partner's Name:</label>
+            <input type="text" id="partnerName" placeholder="Enter partner's name">
+        </div>
+        <div class="input-group">
+            <label for="location">Future Location:</label>
+            <input type="text" id="location" placeholder="Enter location">
+        </div>
+        <div class="input-group">
+            <label for="jobTitle">Future Job Title:</label>
+            <input type="text" id="jobTitle" placeholder="Enter job title">
+        </div>
+        <button onclick="tellFortune()">Reveal Your Fortune</button>
+        <div id="error" class="error"></div>
+        <div id="result" class="result"></div>
+        <div id="fortune-visual" class="fortune-visual">
+            <div class="crystal-ball"></div>
+        </div>
+    </div>
+
+    <script>
+        function getRandomFortunePrefix() {
+            const prefixes = [
+                'The stars foretell that',
+                'Destiny reveals that',
+                'The cosmos predict that',
+                'Fate whispers that'
+            ];
+            return prefixes[Math.floor(Math.random() * prefixes.length)];
+        }
+
+        function tellFortune() {
+            const numChildren = parseInt(document.getElementById('numChildren').value);
+            const partnerName = document.getElementById('partnerName').value.trim();
+            const location = document.getElementById('location').value.trim();
+            const jobTitle = document.getElementById('jobTitle').value.trim();
+
+            if (isNaN(numChildren) || numChildren < 0 || !partnerName || !location || !jobTitle) {
+                showError('Please fill in all fields with valid values.');
+                return;
+            }
+
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+            document.getElementById('fortune-visual').style.display = 'none';
+
+            const fortune = `${getRandomFortunePrefix()} you will be a ${jobTitle} in ${location}, and married to ${partnerName} with ${numChildren} kid${numChildren === 1 ? '' : 's'}.`;
+            showResult(fortune);
+            document.getElementById('fortune-visual').style.display = 'block';
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        function showResult(message) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = message;
+            resultDiv.style.display = 'block';
+        }
+
+        // Clear results when inputs change
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', () => {
+                document.getElementById('result').style.display = 'none';
+                document.getElementById('error').style.display = 'none';
+                document.getElementById('fortune-visual').style.display = 'none';
+            });
+        });
+
+        // Focus on first input
+        document.getElementById('numChildren').focus();
+    </script>
+</body>
+</html>
